@@ -6,10 +6,10 @@ using System.Collections;
 public class Platformer : MonoBehaviour
 {
     Vector3 inputVector;
-    float speed = 5f;
+    float speed = 25f;
     float turnSpeed = 120f;
-    float jumpSpeed = 2f;
-    float fallSpeed = 6f;
+    float jumpSpeed = .7f;
+    float fallSpeed = 5f;
     bool grounded = false;
     float movement;
     float turning;
@@ -54,8 +54,12 @@ public class Platformer : MonoBehaviour
             movement = Input.GetAxis("Vertical") * speed * Time.deltaTime;
             transform.Translate(0, 0, movement);
         }
-
-        turning = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            turning = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
+            transform.Rotate(0, turning, 0);
+        }
+        
 
         //Jumping
         if (Physics.Raycast(transform.position, -transform.up, 1.3f) == true)
@@ -72,9 +76,6 @@ public class Platformer : MonoBehaviour
         }
 
 
-        //Debug.Log(Input.GetAxis("Vertical"));
-        //Debug.Log(movement);
-
     }
     
     void FixedUpdate()
@@ -90,12 +91,11 @@ public class Platformer : MonoBehaviour
         {
             rigidbody.AddForce(-rigidbody.velocity + Physics.gravity * fallSpeed, ForceMode.Acceleration);
         }
-        
+    }
 
-        //Usage of GetAxis turning
-        transform.Rotate(0, turning, 0);
-        
-        //movement = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        
+    void OnCollisionEnter()
+    {
+        audio.Play();
+        particleSystem.Play();
     }
 }
