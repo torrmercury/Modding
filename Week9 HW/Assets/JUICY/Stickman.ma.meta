@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 34c5c3462d9a8584f9f0adb62e43154c
+guid: aec0ff9fc80f8434296743074448d1d6
 ModelImporter:
   serializedVersion: 15
   fileIDToRecycleName:
@@ -67,22 +67,22 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    animationCompression: 1
+    animationCompression: 0
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
-    animationWrapMode: 2
+    animationWrapMode: 0
     clipAnimations:
     - name: Walk
       takeName: Take 001
       firstFrame: 1
       lastFrame: 24
-      wrapMode: 2
+      wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
-      loopBlend: 1
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0

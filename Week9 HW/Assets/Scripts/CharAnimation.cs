@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class CharAnimation : MonoBehaviour {
@@ -17,14 +16,13 @@ public class CharAnimation : MonoBehaviour {
     {
         //if player is moving or holding down any buttons then play walk
         //if not, crossfade to idle
-        if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
+        if (Input.GetKeyDown(KeyCode.W)) ;
         {
-            animation["Walk"].speed = myrigidbody.velocity.magnitude;
-            //animation.CrossFade("Walk", .5f);
+            animation.CrossFade("Walk", .5f);
         }
         if (Input.GetKey(KeyCode.Space))
         {
-            animation["Jump"].speed = myrigidbody.velocity.magnitude;
+            animation.CrossFade("Jump", .5f);
         }
         else
         {

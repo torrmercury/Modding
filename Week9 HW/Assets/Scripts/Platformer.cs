@@ -12,6 +12,8 @@ public class Platformer : MonoBehaviour
     bool grounded = false;
     float movement;
     float turning;
+    public AudioClip Collide;
+    public AudioClip Jump;
 
     void Update()
     {
@@ -66,6 +68,8 @@ public class Platformer : MonoBehaviour
         {
             inputVector += Vector3.up * jumpSpeed;
             grounded = false;
+            audio.clip = Jump;
+            audio.Play();
         }
     }
     
@@ -76,7 +80,6 @@ public class Platformer : MonoBehaviour
         if (inputVector != Vector3.zero)
         {
             rigidbody.AddForce(inputVector * speed, ForceMode.VelocityChange);
-            Debug.Log("works?");
         }
 
         else
@@ -88,12 +91,13 @@ public class Platformer : MonoBehaviour
     void OnCollisionEnter()
     {
         grounded = true;
+        audio.clip = Collide;
         audio.Play();
         particleSystem.Play();
     }
 
     void OnTriggerEnter()
     {
-        transform.position = new Vector3(0f, 15f, 0f);
+        transform.position = new Vector3(0f, 20f, 0f);
     }
 }
