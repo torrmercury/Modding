@@ -16,7 +16,7 @@ public class CharAnimation : MonoBehaviour {
     {
         //if player is moving or holding down any buttons then play walk
         //if not, crossfade to idle
-        if (Input.GetKeyDown(KeyCode.W)) ;
+        if (Input.GetAxis("Vertical") != 0)
         {
             animation.CrossFade("Walk", .5f);
         }
