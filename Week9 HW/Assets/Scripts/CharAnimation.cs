@@ -20,7 +20,7 @@ public class CharAnimation : MonoBehaviour {
         {
             animation.CrossFade("Walk", .5f);
         }
-        if (Input.GetKey(KeyCode.Space))
+        else if (Input.GetKey(KeyCode.Space))
         {
             animation.CrossFade("Jump", .5f);
         }
